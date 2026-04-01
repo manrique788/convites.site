@@ -7,8 +7,8 @@
 
 <style>
 body {
-  margin: 0;
   font-family: Arial;
+  margin: 0;
   background: #f5f5f5;
 }
 
@@ -21,39 +21,32 @@ body {
 }
 
 .container {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
-  background: white;
-  padding: 15px;
-}
-
-.imagem {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.titulo {
-  font-size: 20px;
-  margin-top: 10px;
-}
-
-input {
-  width: 100%;
   padding: 10px;
-  margin: 5px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+}
+
+.item {
+  background: white;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nome {
+  font-size: 14px;
 }
 
 .botao {
-  width: 100%;
-  padding: 12px;
-  background: #ff4da6;
+  background: #00cc66;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -64,27 +57,41 @@ input {
 
 <div class="container">
 
-<img class="imagem" src="https://picsum.photos/500/300">
+<div class="item">
+<div class="nome">Convite Stitch Aniversariante</div>
+<button class="botao" onclick="enviar('Stitch Aniversariante')">Pedir</button>
+</div>
 
-<div class="titulo">Convite Personalizado</div>
+<div class="item">
+<div class="nome">Convite Lilo e Stitch Infantil</div>
+<button class="botao" onclick="enviar('Lilo e Stitch Infantil')">Pedir</button>
+</div>
 
-<input id="nome" placeholder="Nome do aniversariante">
-<input id="idade" placeholder="Idade">
-<input id="data" placeholder="Data da festa">
+<div class="item">
+<div class="nome">Convite Minecraft</div>
+<button class="botao" onclick="enviar('Minecraft')">Pedir</button>
+</div>
 
-<button class="botao" onclick="enviar()">Pedir no WhatsApp</button>
+<div class="item">
+<div class="nome">Convite Homem Aranha Herói</div>
+<button class="botao" onclick="enviar('Homem Aranha')">Pedir</button>
+</div>
+
+<div class="item">
+<div class="nome">Convite Sonic</div>
+<button class="botao" onclick="enviar('Sonic')">Pedir</button>
+</div>
+
+<div class="item">
+<div class="nome">Convite Bolofofos</div>
+<button class="botao" onclick="enviar('Bolofofos')">Pedir</button>
+</div>
 
 </div>
 
 <script>
-function enviar() {
-  let nome = document.getElementById("nome").value;
-  let idade = document.getElementById("idade").value;
-  let data = document.getElementById("data").value;
-
-  let mensagem = "Olá, quero um convite! Nome: " + nome +
-  ", Idade: " + idade +
-  ", Data: " + data;
+function enviar(tema) {
+  let mensagem = "Olá, quero um convite: " + tema;
 
   let url = "https://wa.me/5542988827801?text=" + encodeURIComponent(mensagem);
 
