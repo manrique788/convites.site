@@ -7,43 +7,34 @@
 
 <style>
 body {
-  font-family: Arial;
-  background: #0a0a0a;
-  color: white;
   margin: 0;
+  font-family: Arial;
+  background: #f5f5f5;
 }
 
-.header {
+.topo {
+  background: #ff4da6;
+  color: white;
+  padding: 15px;
   text-align: center;
-  padding: 20px;
+  font-size: 20px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.produto {
-  background: #111;
-  border-radius: 12px;
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
   padding: 15px;
 }
 
-.produto img {
+.imagem {
   width: 100%;
   border-radius: 10px;
 }
 
 .titulo {
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 10px;
-}
-
-.preco {
-  color: #00ff88;
-  margin: 5px 0;
 }
 
 input {
@@ -51,76 +42,49 @@ input {
   padding: 10px;
   margin: 5px 0;
   border-radius: 8px;
-  border: none;
+  border: 1px solid #ccc;
 }
 
-button {
+.botao {
   width: 100%;
   padding: 12px;
-  background: #00ff88;
+  background: #ff4da6;
+  color: white;
   border: none;
   border-radius: 8px;
   font-weight: bold;
-  cursor: pointer;
+  margin-top: 10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-<h1>Dominus Convites</h1>
-<p>Escolha seu convite e personalize</p>
-</div>
+<div class="topo">Dominus Convites</div>
 
-<div class="grid">
+<div class="container">
 
-<!-- PRODUTO 1 -->
-<div class="produto">
-<img src="https://picsum.photos/400/300?1">
-<div class="titulo">Convite Tema Stitch</div>
-<div class="preco">R$10,00</div>
+<img class="imagem" src="https://picsum.photos/500/300">
 
-<input id="nome1" placeholder="Nome">
-<input id="idade1" placeholder="Idade">
+<div class="titulo">Convite Personalizado</div>
 
-<button onclick="enviar('Stitch', 'nome1', 'idade1')">Pedir no WhatsApp</button>
-</div>
+<input id="nome" placeholder="Nome do aniversariante">
+<input id="idade" placeholder="Idade">
+<input id="data" placeholder="Data da festa">
 
-<!-- PRODUTO 2 -->
-<div class="produto">
-<img src="https://picsum.photos/400/300?2">
-<div class="titulo">Convite Tema Barbie</div>
-<div class="preco">R$10,00</div>
-
-<input id="nome2" placeholder="Nome">
-<input id="idade2" placeholder="Idade">
-
-<button onclick="enviar('Barbie', 'nome2', 'idade2')">Pedir no WhatsApp</button>
-</div>
-
-<!-- PRODUTO 3 -->
-<div class="produto">
-<img src="https://picsum.photos/400/300?3">
-<div class="titulo">Convite Tema Futebol</div>
-<div class="preco">R$10,00</div>
-
-<input id="nome3" placeholder="Nome">
-<input id="idade3" placeholder="Idade">
-
-<button onclick="enviar('Futebol', 'nome3', 'idade3')">Pedir no WhatsApp</button>
-</div>
+<button class="botao" onclick="enviar()">Pedir no WhatsApp</button>
 
 </div>
 
 <script>
-function enviar(tema, nomeId, idadeId) {
-  let nome = document.getElementById(nomeId).value;
-  let idade = document.getElementById(idadeId).value;
+function enviar() {
+  let nome = document.getElementById("nome").value;
+  let idade = document.getElementById("idade").value;
+  let data = document.getElementById("data").value;
 
-  let mensagem = "Olá, quero um convite! Tema: " + tema +
-  ", Nome: " + nome +
-  ", Idade: " + idade;
+  let mensagem = "Olá, quero um convite! Nome: " + nome +
+  ", Idade: " + idade +
+  ", Data: " + data;
 
   let url = "https://wa.me/5542988827801?text=" + encodeURIComponent(mensagem);
 
