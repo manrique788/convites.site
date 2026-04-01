@@ -2,42 +2,51 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dominus Convites</title>
 
 <style>
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #0a0a0a;
   color: white;
+  margin: 0;
   text-align: center;
+}
+
+h1 {
+  margin-top: 20px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 15px;
   padding: 20px;
 }
 
 .card {
   background: #111;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 10px;
 }
 
 .card img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
+  height: 140px;
+  object-fit: cover;
 }
 
 button {
   background: #00ff88;
   border: none;
-  padding: 8px;
+  padding: 10px;
   width: 100%;
-  margin-top: 5px;
-  border-radius: 6px;
+  margin-top: 8px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .container {
@@ -49,7 +58,7 @@ button {
 input {
   width: 100%;
   padding: 10px;
-  margin: 5px 0;
+  margin: 6px 0;
   border-radius: 8px;
   border: none;
 }
@@ -59,36 +68,36 @@ input {
 <body>
 
 <h1>Dominus Convites</h1>
-<p>Escolha seu tema</p>
+<p>Escolha seu convite</p>
 
 <div class="grid">
 
 <div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Spiderman50.jpg">
+<img src="https://images.unsplash.com/photo-1608889175123-8ee362201f81">
 <p>Homem-Aranha</p>
 <button onclick="selecionar('Homem-Aranha')">Escolher</button>
 </div>
 
 <div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/en/3/3a/Disney_Princesses.png">
+<img src="https://images.unsplash.com/photo-1603575448878-868a20723f5d">
 <p>Princesa</p>
 <button onclick="selecionar('Princesa')">Escolher</button>
 </div>
 
 <div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Soccerball.svg">
+<img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55">
 <p>Futebol</p>
 <button onclick="selecionar('Futebol')">Escolher</button>
 </div>
 
 <div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/en/5/5e/Free_Fire_Logo.png">
+<img src="https://images.unsplash.com/photo-1611605698335-8b1569810432">
 <p>Free Fire</p>
 <button onclick="selecionar('Free Fire')">Escolher</button>
 </div>
 
 <div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Barbie_Logo.svg">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
 <p>Barbie</p>
 <button onclick="selecionar('Barbie')">Escolher</button>
 </div>
@@ -111,14 +120,15 @@ function selecionar(tema) {
 }
 
 function enviar() {
-  const nome = document.getElementById("nome").value;
-  const idade = document.getElementById("idade").value;
-  const tema = document.getElementById("tema").value;
+  let nome = document.getElementById("nome").value;
+  let idade = document.getElementById("idade").value;
+  let tema = document.getElementById("tema").value;
 
-  const mensagem = `Olá, quero um convite! Nome: ${nome}, Idade: ${idade}, Tema: ${tema}`;
-  const url = `https://wa.me/5542988827801?text=${encodeURIComponent(mensagem)}`;
+  let mensagem = "Olá, quero um convite! Nome: " + nome + ", Idade: " + idade + ", Tema: " + tema;
 
-  window.open(url, '_blank');
+  let url = "https://wa.me/5542988827801?text=" + encodeURIComponent(mensagem);
+
+  window.open(url, "_blank");
 }
 </script>
 
