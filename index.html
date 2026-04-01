@@ -12,45 +12,108 @@ body {
   text-align: center;
 }
 
+h1 {
+  margin-top: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  background: #111;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+button {
+  background: #00ff88;
+  border: none;
+  padding: 8px;
+  width: 100%;
+  margin-top: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 .container {
   max-width: 400px;
   margin: auto;
   padding: 20px;
 }
 
-input, button {
+input {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
   border-radius: 8px;
   border: none;
 }
-
-button {
-  background: #00ff88;
-  font-weight: bold;
-  cursor: pointer;
-}
 </style>
-
 </head>
 
 <body>
 
 <h1>Dominus Convites</h1>
-<p>Convites digitais personalizados</p>
+<p>Escolha seu tema</p>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://i.imgur.com/1.jpg">
+<p>Homem-Aranha</p>
+<button onclick="selecionar('Homem-Aranha')">Escolher</button>
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/2.jpg">
+<p>Princesa</p>
+<button onclick="selecionar('Princesa')">Escolher</button>
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/3.jpg">
+<p>Futebol</p>
+<button onclick="selecionar('Futebol')">Escolher</button>
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/4.jpg">
+<p>Free Fire</p>
+<button onclick="selecionar('Free Fire')">Escolher</button>
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/5.jpg">
+<p>Barbie</p>
+<button onclick="selecionar('Barbie')">Escolher</button>
+</div>
+
+</div>
 
 <div class="container">
+<h2>Personalizar</h2>
 
 <input id="nome" placeholder="Nome">
 <input id="idade" placeholder="Idade">
 <input id="tema" placeholder="Tema">
 
 <button onclick="enviar()">Pedir pelo WhatsApp</button>
-
 </div>
 
 <script>
+function selecionar(tema) {
+  document.getElementById("tema").value = tema;
+}
+
 function enviar() {
   const nome = document.getElementById("nome").value;
   const idade = document.getElementById("idade").value;
