@@ -1,80 +1,67 @@
-import { useState } from "react";
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Dominus Convites</title>
 
-export default function ConvitesSite() {
-  const [form, setForm] = useState({ nome: "", idade: "", tema: "" });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = () => {
-    const mensagem = `Olá, quero um convite! Nome: ${form.nome}, Idade: ${form.idade}, Tema: ${form.tema}`;
-    const url = `https://wa.me/5542988827801?text=${encodeURIComponent(mensagem)}`;
-    window.open(url, "_blank");
-  };
-
-  return (
-    <div style={{ fontFamily: "Arial", background: "#0a0a0a", color: "white", minHeight: "100vh" }}>
-      {/* HEADER */}
-      <div style={{ padding: "20px", textAlign: "center", borderBottom: "1px solid #222" }}>
-        <h1 style={{ fontSize: "32px" }}>Dominus Convites</h1>
-        <p>Convites digitais personalizados e animados</p>
-      </div>
-
-      {/* PRODUTOS */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "20px", padding: "20px" }}>
-        {[
-          { nome: "Homem-Aranha", img: "https://i.imgur.com/1.jpg" },
-          { nome: "Princesa", img: "https://i.imgur.com/2.jpg" },
-          { nome: "Futebol", img: "https://i.imgur.com/3.jpg" },
-        ].map((item) => (
-          <div key={item.nome} style={{ background: "#111", borderRadius: "12px", padding: "10px" }}>
-            <img src={item.img} alt={item.nome} style={{ width: "100%", borderRadius: "10px" }} />
-            <h2 style={{ marginTop: "10px" }}>{item.nome}</h2>
-            <button
-              style={{ marginTop: "10px", width: "100%", padding: "10px", background: "#00ff88", border: "none", borderRadius: "8px" }}
-              onClick={() => setForm({ ...form, tema: item.nome })}
-            >
-              Escolher
-            </button>
-          </div>
-        ))}
-      </div>
-
-      {/* FORMULÁRIO */}
-      <div style={{ maxWidth: "400px", margin: "auto", padding: "20px" }}>
-        <h2>Personalizar convite</h2>
-
-        <input name="nome" placeholder="Nome" onChange={handleChange} style={inputStyle} />
-        <input name="idade" placeholder="Idade" onChange={handleChange} style={inputStyle} />
-        <input name="tema" placeholder="Tema" value={form.tema} onChange={handleChange} style={inputStyle} />
-
-        <button onClick={handleSubmit} style={buttonStyle}>
-          Pedir pelo WhatsApp
-        </button>
-      </div>
-
-      {/* RODAPÉ */}
-      <div style={{ textAlign: "center", padding: "20px", borderTop: "1px solid #222", marginTop: "40px" }}>
-        <p>© 2026 Dominus Convites - Todos os direitos reservados</p>
-      </div>
-    </div>
-  );
+<style>
+body {
+  font-family: Arial;
+  background: #0a0a0a;
+  color: white;
+  text-align: center;
 }
 
-const inputStyle = {
-  width: "100%",
-  padding: "10px",
-  marginBottom: "10px",
-  borderRadius: "8px",
-  border: "none",
-};
+.container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+}
 
-const buttonStyle = {
-  width: "100%",
-  padding: "12px",
-  background: "#00ff88",
-  border: "none",
-  borderRadius: "8px",
-  fontWeight: "bold",
-};
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  background: #00ff88;
+  font-weight: bold;
+  cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Dominus Convites</h1>
+<p>Convites digitais personalizados</p>
+
+<div class="container">
+
+<input id="nome" placeholder="Nome">
+<input id="idade" placeholder="Idade">
+<input id="tema" placeholder="Tema">
+
+<button onclick="enviar()">Pedir pelo WhatsApp</button>
+
+</div>
+
+<script>
+function enviar() {
+  const nome = document.getElementById("nome").value;
+  const idade = document.getElementById("idade").value;
+  const tema = document.getElementById("tema").value;
+
+  const mensagem = `Olá, quero um convite! Nome: ${nome}, Idade: ${idade}, Tema: ${tema}`;
+  const url = `https://wa.me/5542988827801?text=${encodeURIComponent(mensagem)}`;
+
+  window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
