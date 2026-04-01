@@ -10,116 +10,117 @@ body {
   font-family: Arial;
   background: #0a0a0a;
   color: white;
+  margin: 0;
+}
+
+.header {
   text-align: center;
+  padding: 20px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
   padding: 20px;
 }
 
-.card {
+.produto {
   background: #111;
   border-radius: 12px;
-  padding: 10px;
+  padding: 15px;
 }
 
-.card img {
+.produto img {
   width: 100%;
-  height: 140px;
-  object-fit: cover;
   border-radius: 10px;
 }
 
-button {
-  background: #00ff88;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  margin-top: 8px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
+.titulo {
+  font-size: 18px;
+  margin-top: 10px;
 }
 
-.container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
+.preco {
+  color: #00ff88;
+  margin: 5px 0;
 }
 
 input {
   width: 100%;
   padding: 10px;
-  margin: 6px 0;
+  margin: 5px 0;
   border-radius: 8px;
   border: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #00ff88;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
+<div class="header">
 <h1>Dominus Convites</h1>
-<p>Escolha seu tema</p>
+<p>Escolha seu convite e personalize</p>
+</div>
 
 <div class="grid">
 
-<div class="card">
-<img src="https://picsum.photos/300/200?random=1">
-<p>Super-herói</p>
-<button onclick="selecionar('Super-herói')">Escolher</button>
+<!-- PRODUTO 1 -->
+<div class="produto">
+<img src="https://picsum.photos/400/300?1">
+<div class="titulo">Convite Tema Stitch</div>
+<div class="preco">R$10,00</div>
+
+<input id="nome1" placeholder="Nome">
+<input id="idade1" placeholder="Idade">
+
+<button onclick="enviar('Stitch', 'nome1', 'idade1')">Pedir no WhatsApp</button>
 </div>
 
-<div class="card">
-<img src="https://picsum.photos/300/200?random=2">
-<p>Princesa</p>
-<button onclick="selecionar('Princesa')">Escolher</button>
+<!-- PRODUTO 2 -->
+<div class="produto">
+<img src="https://picsum.photos/400/300?2">
+<div class="titulo">Convite Tema Barbie</div>
+<div class="preco">R$10,00</div>
+
+<input id="nome2" placeholder="Nome">
+<input id="idade2" placeholder="Idade">
+
+<button onclick="enviar('Barbie', 'nome2', 'idade2')">Pedir no WhatsApp</button>
 </div>
 
-<div class="card">
-<img src="https://picsum.photos/300/200?random=3">
-<p>Futebol</p>
-<button onclick="selecionar('Futebol')">Escolher</button>
+<!-- PRODUTO 3 -->
+<div class="produto">
+<img src="https://picsum.photos/400/300?3">
+<div class="titulo">Convite Tema Futebol</div>
+<div class="preco">R$10,00</div>
+
+<input id="nome3" placeholder="Nome">
+<input id="idade3" placeholder="Idade">
+
+<button onclick="enviar('Futebol', 'nome3', 'idade3')">Pedir no WhatsApp</button>
 </div>
 
-<div class="card">
-<img src="https://picsum.photos/300/200?random=4">
-<p>Games</p>
-<button onclick="selecionar('Games')">Escolher</button>
-</div>
-
-<div class="card">
-<img src="https://picsum.photos/300/200?random=5">
-<p>Unicórnio</p>
-<button onclick="selecionar('Unicórnio')">Escolher</button>
-</div>
-
-</div>
-
-<div class="container">
-<h2>Personalizar</h2>
-
-<input id="nome" placeholder="Nome">
-<input id="idade" placeholder="Idade">
-<input id="tema" placeholder="Tema">
-
-<button onclick="enviar()">Pedir pelo WhatsApp</button>
 </div>
 
 <script>
-function selecionar(tema) {
-  document.getElementById("tema").value = tema;
-}
+function enviar(tema, nomeId, idadeId) {
+  let nome = document.getElementById(nomeId).value;
+  let idade = document.getElementById(idadeId).value;
 
-function enviar() {
-  let nome = document.getElementById("nome").value;
-  let idade = document.getElementById("idade").value;
-  let tema = document.getElementById("tema").value;
-
-  let mensagem = "Olá, quero um convite! Nome: " + nome + ", Idade: " + idade + ", Tema: " + tema;
+  let mensagem = "Olá, quero um convite! Tema: " + tema +
+  ", Nome: " + nome +
+  ", Idade: " + idade;
 
   let url = "https://wa.me/5542988827801?text=" + encodeURIComponent(mensagem);
 
