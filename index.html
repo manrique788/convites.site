@@ -24,15 +24,15 @@
 <script>
 const cats=[['Todos','▦'],['Aniversário','♟'],['Infantil','☻'],['Casamento','♧'],['Chá de bebê','♡'],['Chá revelação','♡'],['Formatura','⌑'],['Festa de 15 anos','♛'],['Churrasco','♨'],['Outros','•••']];
 const models=[
-{id:'rose',name:'Aniversário Adulto',cat:'Aniversário',tag:'Novo',a:'#f8dfe8',b:'#fff5e9,ink:'#8a3c62,k:'VOCÊ ESTÁ CONVIDADO',t:'Vamos celebrar!',d:'✦ ✧ ✦'},
-{id:'bear',name:'Chá de Bebê',cat:'Chá de bebê',tag:'Mais escolhido',a:'#e1eedc',b:'#fff8e8',ink:'#4f714b,k:'UM NOVO AMOR ESTÁ CHEGANDO',t:'Chá de bebê',d:'♡ 🧸 ♡'},
-{id:'gold',name:'Formatura',cat:'Formatura',a:'#17151e',b:'#352a1e',ink:'#f2d27a,k:'UMA GRANDE CONQUISTA',t:'Formatura',d:'✦ ◆ ✦'},
-{id:'floral',name:'Casamento',cat:'Casamento',a:'#e9efdf',b:'#fff8ed',ink:'#64764b,k:'COM AMOR, CONVIDAMOS',t:'Nosso grande dia',d:'❀ ♡ ❀'},
-{id:'hero',name:'Aniversário Infantil',cat:'Infantil',a:'#dbeeff',b:'#fff0e7',ink:'#24568a,k:'PREPARE-SE PARA A AVENTURA',t:'Dia de festa!',d:'✦ ★ ✦'},
-{id:'reveal',name:'Chá Revelação',cat:'Chá revelação',a:'#f8dfe9',b:'#e6e9ff',ink:'#a34891,k:'MENINO OU MENINA?',t:'Vamos descobrir!',d:'♡ ✦ ♡'},
-{id:'lavender',name:'Aniversário Lavanda',cat:'Aniversário',a:'#e7dff8',b:'#fff8ff',ink:'#70528f,k:'UMA DATA ESPECIAL',t:'Feliz aniversário',d:'✧ ♡ ✧'},
-{id:'tropical',name:'Festa Tropical',cat:'Festa de 15 anos',a:'#ffe2b5',b:'#fff4d9',ink:'#86502a,k:'VOCÊ É NOSSO CONVIDADO',t:'Bora comemorar!',d:'✺ ❋ ✺'},
-{id:'bbq',name:'Churrasco com amigos',cat:'Churrasco',a:'#f5d8c9',b:'#fff3e4',ink:'#934d37,k:'BONS AMIGOS, BOA COMIDA',t:'Churrasco',d:'♨ ✦ ♨'}
+{id:'rose',name:'Aniversário Adulto',cat:'Aniversário',tag:'Novo',a:'#f8dfe8',b:'#fff5e9',ink:'#8a3c62',k:'VOCÊ ESTÁ CONVIDADO',t:'Vamos celebrar!',d:'✦ ✧ ✦'},
+{id:'bear',name:'Chá de Bebê',cat:'Chá de bebê',tag:'Mais escolhido',a:'#e1eedc',b:'#fff8e8',ink:'#4f714b',k:'UM NOVO AMOR ESTÁ CHEGANDO',t:'Chá de bebê',d:'♡ 🧸 ♡'},
+{id:'gold',name:'Formatura',cat:'Formatura',a:'#17151e',b:'#352a1e',ink:'#f2d27a',k:'UMA GRANDE CONQUISTA',t:'Formatura',d:'✦ ◆ ✦'},
+{id:'floral',name:'Casamento',cat:'Casamento',a:'#e9efdf',b:'#fff8ed',ink:'#64764b',k:'COM AMOR, CONVIDAMOS',t:'Nosso grande dia',d:'❀ ♡ ❀'},
+{id:'hero',name:'Aniversário Infantil',cat:'Infantil',a:'#dbeeff',b:'#fff0e7',ink:'#24568a',k:'PREPARE-SE PARA A AVENTURA',t:'Dia de festa!',d:'✦ ★ ✦'},
+{id:'reveal',name:'Chá Revelação',cat:'Chá revelação',a:'#f8dfe9',b:'#e6e9ff',ink:'#a34891',k:'MENINO OU MENINA?',t:'Vamos descobrir!',d:'♡ ✦ ♡'},
+{id:'lavender',name:'Aniversário Lavanda',cat:'Aniversário',a:'#e7dff8',b:'#fff8ff',ink:'#70528f',k:'UMA DATA ESPECIAL',t:'Feliz aniversário',d:'✧ ♡ ✧'},
+{id:'tropical',name:'Festa Tropical',cat:'Festa de 15 anos',a:'#ffe2b5',b:'#fff4d9',ink:'#86502a',k:'VOCÊ É NOSSO CONVIDADO',t:'Bora comemorar!',d:'✺ ❋ ✺'},
+{id:'bbq',name:'Churrasco com amigos',cat:'Churrasco',a:'#f5d8c9',b:'#fff3e4',ink:'#934d37',k:'BONS AMIGOS, BOA COMIDA',t:'Churrasco',d:'♨ ✦ ♨'}
 ];
 const common=[
 {key:'name',title:'Qual é o nome da pessoa ou do evento?',help:'Vamos colocar essa informação em destaque no convite.',label:'Nome',placeholder:'Ex.: Mariana',required:true},
