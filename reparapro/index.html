@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="ReparaPro: identificação de aparelhos, registros de diagnóstico e busca de documentação técnica.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>ReparaPro — Assistência técnica</title>
+<style>
+:root{color-scheme:light;--bg:#f3f5f8;--card:#fff;--ink:#182231;--muted:#687587;--line:#e1e6ee;--orange:#f28c28;--navy:#101827;--blue:#eaf2ff;--green:#eaf8ef;--amber:#fff5e8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}header{background:linear-gradient(130deg,#101827,#26354b);color:#fff;padding:22px 16px 20px;border-bottom:4px solid var(--orange)}.top{max-width:900px;margin:auto;display:flex;align-items:center;gap:12px}.logo{width:50px;height:50px;flex-shrink:0}h1{font-size:25px;letter-spacing:-.6px;line-height:1.1;margin:0 0 5px}header p{font-size:12px;color:#d3dce8;margin:0}main{max-width:900px;margin:18px auto;padding:0 13px 36px}.notice{border:1px solid #cbdcf7;background:var(--blue);color:#29486f;padding:12px 13px;border-radius:13px;font-size:13px;margin-bottom:14px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:17px;margin-bottom:14px;box-shadow:0 5px 18px #14223808}h2{font-size:17px;margin:0 0 5px}.sub{color:var(--muted);font-size:12px;margin:0 0 14px}label{display:block;font-size:12px;font-weight:750;margin:11px 0 5px}input,select,textarea{font:inherit;width:100%;padding:11px 12px;border:1px solid #cbd3df;border-radius:10px;background:#fff;color:var(--ink);min-height:44px}textarea{min-height:80px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}button,.btn{font:700 13px system-ui;min-height:43px;padding:10px 13px;border-radius:11px;border:0;display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;text-decoration:none}.primary{background:var(--orange);color:#2b1b0c}.dark{background:var(--navy);color:#fff}.light{background:#eef1f5;color:#253247;border:1px solid #e0e5ed}.full{width:100%;margin-top:13px}.result{margin-top:12px;border-radius:11px;padding:11px 12px;background:var(--amber);border:1px solid #f3d4ad;color:#75490d;font-size:12px}.result.info{background:var(--blue);border-color:#cbdcf7;color:#29486f}.result.good{background:var(--green);border-color:#c2e8ce;color:#205c38}.safety{font-size:12px;color:#774b0d;background:#fff7ed;border-left:4px solid #e58a20;padding:11px;border-radius:8px;margin-top:13px}.entry{border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:9px}.entry strong{display:block}.entry small{display:block;color:var(--muted);margin-top:3px}.pill{display:inline-block;background:#fff0df;color:#8b4a0c;border-radius:20px;padding:3px 7px;font-size:10px;font-weight:800;margin-left:5px}.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.actions button{min-height:34px;padding:7px 10px;font-size:11px}.empty{background:#f8fafc;border-radius:11px;padding:17px;text-align:center;color:var(--muted);font-size:12px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:8px}.tiny{font-size:11px;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:11px;padding:0 12px 26px}.steps{display:grid;gap:8px}.step{padding:11px;border:1px solid var(--line);border-radius:11px}.step b{display:block;font-size:13px}.step span{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.card{padding:15px}header{padding:19px 14px}h1{font-size:23px}.row{grid-template-columns:1fr}.sectionhead{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="top"><img class="logo" src="./icon.svg" alt=""><div><h1>ReparaPro</h1><p>Seu apoio para identificar, diagnosticar e reparar</p></div></div></header>
+<main>
+<div class="notice"><b>Versão inicial pronta para uso.</b> Seus registros ficam neste aparelho. A identificação por número de série não revela automaticamente todos os defeitos: confirme o modelo e use documentação técnica confiável. O app não inventa procedimentos.</div>
+<div class="grid">
+<section class="card">
+<h2>🔎 Identificar aparelho</h2><p class="sub">Confira a etiqueta do equipamento. Marca + modelo + tensão costumam ser necessários.</p>
+<form id="lookup">
+<label for="brand">Marca</label><input id="brand" autocomplete="organization" placeholder="Ex.: WAP, Bosch, Electrolux">
+<label for="model">Modelo / código do produto</label><input id="model" placeholder="Código completo da etiqueta">
+<div class="row"><div><label for="serial">Número de série</label><input id="serial" placeholder="S/N"></div><div><label for="voltage">Tensão</label><select id="voltage"><option value="">Não informada</option><option>127 V</option><option>220 V</option><option>Bivolt</option><option>À bateria</option><option>Não se aplica</option></select></div></div>
+<button class="primary full" type="submit">Preparar consulta</button>
+</form>
+<div id="lookupResult" aria-live="polite"></div>
+<button id="manualSearch" class="dark full" type="button">Buscar manual e peças oficiais ↗</button>
+</section>
+<section class="card">
+<h2>🧰 Registrar diagnóstico</h2><p class="sub">Anote o sintoma, os testes e os resultados para não confundir hipótese com defeito confirmado.</p>
+<form id="caseForm">
+<label for="device">Aparelho / modelo</label><input id="device" required placeholder="Marca e modelo">
+<div class="row"><div><label for="symptom">Sintoma</label><select id="symptom" required><option value="">Selecione</option><option>Não liga</option><option>Desliga durante o uso</option><option>Ruído ou vibração</option><option>Vazamento</option><option>Baixo desempenho / pouca pressão</option><option>Não aquece</option><option>Não drena / não bombeia</option><option>Cheiro de queimado</option><option>Falha intermitente</option><option>Outro</option></select></div><div><label for="caseSerial">Nº de série (opcional)</label><input id="caseSerial" placeholder="S/N"></div></div>
+<label for="notes">Observações e testes realizados</label><textarea id="notes" placeholder="Descreva o que foi observado, medições e resultados."></textarea>
+<button class="primary full" type="submit">Salvar atendimento neste celular</button>
+</form>
+<div class="safety"><b>Segurança:</b> desconecte a alimentação antes de abrir. Não teste circuitos energizados, capacitores, gás ou sistemas pressurizados sem treinamento e procedimento específico do fabricante.</div>
+</section>
+</div>
+<section class="card">
+<div class="sectionhead"><div><h2>📋 Histórico de atendimentos</h2><p class="sub" style="margin:4px 0 0">Guardado localmente neste navegador; não sincroniza entre aparelhos.</p></div><div class="actions" style="margin:0"><button class="light" id="export" type="button">Exportar dados</button><button class="light" id="clear" type="button">Apagar histórico</button></div></div>
+<div id="history" style="margin-top:12px"></div>
+</section>
+<section class="card"><h2>Como usar com segurança</h2><p class="sub">Fluxo recomendado para qualquer marca ou tipo de aparelho.</p>
+<div class="steps">
+<div class="step"><b>1. Identifique corretamente</b><span>Registre modelo, código, tensão e revisão da etiqueta; o número de série isolado pode não ser suficiente.</span></div>
+<div class="step"><b>2. Consulte a fonte do fabricante</b><span>Procure manual de serviço, lista de peças, vista explodida e boletins técnicos. Confira se o documento corresponde à versão exata.</span></div>
+<div class="step"><b>3. Diagnostique por evidência</b><span>Registre sintoma, teste recomendado, valor medido e resultado. Não troque uma peça apenas por suspeita.</span></div>
+</div></section>
+</main><footer>ReparaPro • Aplicativo web instalável • Versão inicial gratuita</footer>
+<script>
+const $=id=>document.getElementById(id), KEY='reparapro_history_v1';let current=null;
+function read(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function draw(){const a=read();$('history').innerHTML=a.length?a.slice().reverse().map(x=>'<div class="entry"><strong>'+esc(x.device)+' <span class="pill">'+esc(x.symptom)+'</span></strong><small>'+esc(x.date)+(x.serial?' · Série: '+esc(x.serial):'')+'</small>'+(x.notes?'<p>'+esc(x.notes).replace(/\n/g,'<br>')+'</p>':'')+'<div class="actions"><button class="light" data-delete="'+esc(x.id)+'">Excluir</button></div></div>').join(''):'<div class="empty">Nenhum atendimento registrado ainda.</div>'}
+$('history').addEventListener('click',e=>{const b=e.target.closest('[data-delete]');if(!b)return;localStorage.setItem(KEY,JSON.stringify(read().filter(x=>x.id!==b.dataset.delete)));draw()});
+$('lookup').addEventListener('submit',e=>{e.preventDefault();current={brand:$('brand').value.trim(),model:$('model').value.trim(),serial:$('serial').value.trim(),voltage:$('voltage').value};if(!current.brand&&!current.model&&!current.serial){$('lookupResult').innerHTML='<div class="result">Informe marca, modelo ou número de série.</div>';return}const name=[current.brand,current.model].filter(Boolean).join(' ');$('device').value=name;if(current.serial)$('caseSerial').value=current.serial;$('lookupResult').innerHTML='<div class="result info"><b>Identificação registrada para consulta.</b><br>Esta versão ainda não está conectada a uma base universal de números de série. Use a busca de documentação e confirme a compatibilidade antes de desmontar.</div>'});
+$('manualSearch').addEventListener('click',()=>{const d=current||{brand:$('brand').value.trim(),model:$('model').value.trim(),serial:$('serial').value.trim(),voltage:$('voltage').value};const q=[d.brand,d.model,d.serial,d.voltage,'site oficial manual de serviço vista explodida peças'].filter(Boolean).join(' ');if(!q.trim()){$('lookupResult').innerHTML='<div class="result">Preencha a marca ou o modelo primeiro.</div>';return}window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank','noopener,noreferrer')});
+$('caseForm').addEventListener('submit',e=>{e.preventDefault();const a=read();a.push({id:(Date.now().toString(36)+Math.random().toString(36).slice(2,8)),device:$('device').value.trim(),symptom:$('symptom').value,serial:$('caseSerial').value.trim(),notes:$('notes').value.trim(),date:new Date().toLocaleString('pt-BR')});localStorage.setItem(KEY,JSON.stringify(a));$('caseForm').reset();draw()});
+$('export').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(read(),null,2)],{type:'application/json'});const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='reparapro-historico.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)});
+$('clear').addEventListener('click',()=>{if(confirm('Apagar todos os atendimentos salvos neste navegador?')){localStorage.removeItem(KEY);draw()}});
+if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+draw();
+</script>
+</body></html>
